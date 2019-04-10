@@ -11,15 +11,16 @@ module.exports = {
     //  输出
     output: {
         filename: '[name].js',
-        publicPath: '/dist/',
+        publicPath: '/disk/',
         path: path.join(__dirname, '../dist')
     },
     //  加载器
     module: {
-        rules: [{
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            },
+        rules: [
+            // {
+            //     test: /\.vue$/,
+            //     loader: 'vue-loader'
+            // },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -55,16 +56,16 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.js', '.json', '.scss', '.vue'],
+        extensions: ['.js', '.json', '.less', '.vue'],
     },
 
     plugins: [
-        // new webpack.ProvidePlugin({
-        // $: 'jquery',
-        // jQuery: 'jquery',
-        // 'window.jQuery': 'jquery',
-        // moment: 'moment'
-        // }),
+        new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        moment: 'moment'
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['bundle', 'vendors'],
             minChunks: Infinity
@@ -73,5 +74,5 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
     ],
 
-    devtool: '#source-map'
+    //devtool: '#source-map'
 };
