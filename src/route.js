@@ -1,7 +1,7 @@
 // import HomeCtrl from './controller/home';
 
 const route = ($stateProvider, $urlRouterProvider) => {
-    $urlRouterProvider.otherwise('/user');
+    $urlRouterProvider.otherwise('/layout');
 }
 
 route.$inject = ['$stateProvider', '$urlRouterProvider'];

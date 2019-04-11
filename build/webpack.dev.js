@@ -12,15 +12,11 @@ module.exports = {
     output: {
         filename: '[name].js',
         publicPath: '/disk/',
-        path: path.join(__dirname, '../dist')
+        path: path.join(__dirname, '../disk')
     },
     //  加载器
     module: {
         rules: [
-            // {
-            //     test: /\.vue$/,
-            //     loader: 'vue-loader'
-            // },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -52,11 +48,20 @@ module.exports = {
                 test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
                 loader: 'file-loader'
             },
+            {
+                test: /\.(html)$/,
+                use: {
+                  loader: 'html-loader',
+                  options: {
+                    attrs: [':data-src']
+                  }
+                }
+            }
         ]
     },
 
     resolve: {
-        extensions: ['.js', '.json', '.less', '.vue'],
+        extensions: ['.js', '.json', '.less'],
     },
 
     plugins: [
